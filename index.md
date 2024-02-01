@@ -85,6 +85,30 @@ console.log ("test;"+test)
             }
         }
     }
+        class Platform {
+        constructor(image) {
+            // Initial position of the platform
+            this.position = {
+                x: 0,
+                y: 300
+            }
+            this.image = image;
+            this.width = 650;
+            this.height = 100;
+        }
+        // Method to draw the platform on the canvas
+        draw() {
+            c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+        }
+    }
+    //--
+    // NEW CODE - CREATE PLATFORM OBJECT WITH IMAGE
+    //--
+    // Load platform image
+    let image = new Image();
+    image.src = 'https://samayass.github.io/samayaCSA/images/platform.png'
+    // Create a platform object
+    let platform = new Platform(image);
     // Create a player object
     player = new Player();
     // Define keyboard keys and their states
@@ -108,7 +132,31 @@ console.log ("test;"+test)
         } else {
             player.velocity.x = 0;
         }
+    
+    platform.draw();
+        player.update();
+        // Control players horizontal movement
+        if (keys.right.pressed && player.position.x + player.width <= canvas.width - 50) {
+            player.velocity.x = 15;
+        } else if (keys.left.pressed && player.position.x >= 50) {
+            player.velocity.x = -15;
+        } else {
+            player.velocity.x = 0;
+        }
+        //--
+        // NEW CODE  - PLATFORM COLLISIONS
+        //--
+        // Check for collision between player and platform
+        if (
+            player.position.y + player.height <= platform.position.y &&
+            player.position.y + player.height + player.velocity.y >= platform.position.y &&
+            player.position.x + player.width >= platform.position.x &&
+            player.position.x <= platform.position.x + platform.width
+        ) {
+            player.velocity.y = 0;
+        }
     }
+
     animate();
     // Event listener for keydown events
     addEventListener('keydown', ({ keyCode }) => {
