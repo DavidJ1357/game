@@ -37,8 +37,8 @@ console.log ("test;"+test)
     let canvas = document.getElementById('canvas');
     let c = canvas.getContext('2d');
     // Set the canvas dimensions
-    canvas.width = 650;
-    canvas.height = 400;
+    canvas.width = 700;
+    canvas.height = 450;
     // Define gravity value
     let gravity = 1.5;
     // Define the Player class
@@ -63,7 +63,7 @@ console.log ("test;"+test)
         }
         // Method to draw the player on the canvas
         draw() {
-            c.fillStyle = 'aqua';
+            c.fillStyle = 'orange';
             c.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
         // Method to update the player's position and velocity
