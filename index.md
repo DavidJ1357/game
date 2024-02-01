@@ -63,7 +63,7 @@ console.log ("test;"+test)
         }
         // Method to draw the player on the canvas
         draw() {
-            c.fillStyle = 'orange';
+            c.fillStyle = 'purple';
             c.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
         // Method to update the player's position and velocity
