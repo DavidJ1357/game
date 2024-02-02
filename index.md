@@ -126,9 +126,9 @@ console.log ("test;"+test)
         c.clearRect(0, 0, canvas.width, canvas.height);
         player.update();
         if (keys.right.pressed && player.position.x + player.width <= canvas.width - 50) {
-            player.velocity.x = 15;
+            player.velocity.x = 5;
         } else if (keys.left.pressed && player.position.x >= 50) {
-            player.velocity.x = -15;
+            player.velocity.x = -5;
         } else {
             player.velocity.x = 0;
         }
@@ -137,9 +137,9 @@ console.log ("test;"+test)
         player.update();
         // Control players horizontal movement
         if (keys.right.pressed && player.position.x + player.width <= canvas.width - 50) {
-            player.velocity.x = 15;
+            player.velocity.x = 5;
         } else if (keys.left.pressed && player.position.x >= 50) {
-            player.velocity.x = -15;
+            player.velocity.x = -5;
         } else {
             player.velocity.x = 0;
         }
