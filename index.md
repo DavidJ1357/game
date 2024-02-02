@@ -90,7 +90,7 @@ console.log ("test;"+test)
             // Initial position of the platform
             this.position = {
                 x: 0,
-                y: 300
+                y: 400
             }
             this.image = image;
             this.width = 650;
@@ -126,9 +126,9 @@ console.log ("test;"+test)
         c.clearRect(0, 0, canvas.width, canvas.height);
         player.update();
         if (keys.right.pressed && player.position.x + player.width <= canvas.width - 50) {
-            player.velocity.x = 15;
+            player.velocity.x = 5;
         } else if (keys.left.pressed && player.position.x >= 50) {
-            player.velocity.x = -15;
+            player.velocity.x = -5;
         } else {
             player.velocity.x = 0;
         }
@@ -137,9 +137,9 @@ console.log ("test;"+test)
         player.update();
         // Control players horizontal movement
         if (keys.right.pressed && player.position.x + player.width <= canvas.width - 50) {
-            player.velocity.x = 15;
+            player.velocity.x = 5;
         } else if (keys.left.pressed && player.position.x >= 50) {
-            player.velocity.x = -15;
+            player.velocity.x = -5;
         } else {
             player.velocity.x = 0;
         }
@@ -148,13 +148,15 @@ console.log ("test;"+test)
         //--
         // Check for collision between player and platform
         if (
-            player.position.y + player.height <= platform.position.y &&
-            player.position.y + player.height + player.velocity.y >= platform.position.y &&
-            player.position.x + player.width >= platform.position.x &&
-            player.position.x <= platform.position.x + platform.width
-        ) {
-            player.velocity.y = 0;
-        }
+    player.position.y + player.height >= platform.position.y &&
+    player.position.y <= platform.position.y + platform.height &&
+    player.position.x + player.width >= platform.position.x &&
+    player.position.x <= platform.position.x + platform.width
+) {
+    player.position.y = platform.position.y - player.height;
+    player.velocity.y = 0;
+    player.jumps = 0;
+}
     }
 
     animate();
