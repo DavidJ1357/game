@@ -37,13 +37,13 @@ console.log ("test;"+test)
     let canvas = document.getElementById('canvas');
     let c = canvas.getContext('2d');
     // Set the canvas dimensions
-    canvas.width = 650;
-    canvas.height = 400;
+    canvas.width = 700;
+    canvas.height = 450;
     // Define gravity value
     let gravity = 1.5;
     // Define the Player class
     class Player {
-        constructor() {
+        constructor(image) {
             // Initial position and velocity of the player
             this.position = {
                 x: 100,
@@ -60,10 +60,12 @@ console.log ("test;"+test)
             this.jumps = 0;
             // Maximum allowed jumps
             this.maxJumps = 1;
+
+            this.image = image;
         }
         // Method to draw the player on the canvas
         draw() {
-            c.fillStyle = 'aqua';
+            c.fillStyle = 'cyan';
             c.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
         // Method to update the player's position and velocity
@@ -84,9 +86,56 @@ console.log ("test;"+test)
                 this.jumps++;
             }
         }
+    } 
+        class Platform {
+        constructor(image) {
+            // Initial position of the platform
+            this.position = {
+                x: 0,
+                y: 400
+            }
+            this.image = image;
+            this.width = 650;
+            this.height = 100;
+        }
+        // Method to draw the platform on the canvas
+        draw() {
+            c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+        }
     }
+     class BlockObject {
+        constructor(image) {
+            // Initial position of the block object
+            this.position = {
+                x: 200,
+                y: 100
+            };
+            this.image = image;
+            this.width = 158;
+            this.height = 79;
+        }
+        // Method to draw the block object on the canvas
+        draw() {
+            c.drawImage(this.image, this.position.x, this.position.y);
+        }
+    }
+    //--
+    // NEW CODE - CREATE PLATFORM OBJECT WITH IMAGE
+    //--
+    // Load platform image
+    let image = new Image();
+    let imageBlock = new Image();
+    let blockObject = new BlockObject(imageBlock);
+    image.src = 'https://samayass.github.io/samayaCSA/images/platform.png'
+    imageBlock.src = 'https://samayass.github.io/samayaCSA/images/box.png';
+    
+    // Create a platform object
+    let platform = new Platform(image);
+    // Load player image
+    let playerImage = new Image();
+    playerImage.src = '{{site.baseurl}}/images/Mario_animation.png'
     // Create a player object
-    player = new Player();
+    player = new Player(playerImage);
     // Define keyboard keys and their states
     let keys = {
         right: {
@@ -102,13 +151,54 @@ console.log ("test;"+test)
         c.clearRect(0, 0, canvas.width, canvas.height);
         player.update();
         if (keys.right.pressed && player.position.x + player.width <= canvas.width - 50) {
-            player.velocity.x = 15;
+            player.velocity.x = 5;
         } else if (keys.left.pressed && player.position.x >= 50) {
-            player.velocity.x = -15;
+            player.velocity.x = -5;
         } else {
             player.velocity.x = 0;
         }
+    
+        platform.draw();
+        player.update();
+        blockObject.draw();
+        //--
+        // COLLISIONS BETWEEN BLOCK OBJECT AND PLAYER
+        //--
+        if (
+            player.position.y + player.height <= blockObject.position.y &&
+            player.position.y + player.height + player.velocity.y >= blockObject.position.y &&
+            player.position.x + player.width >= blockObject.position.x &&
+            player.position.x <= blockObject.position.x + blockObject.width
+        )
+        {
+            player.velocity.y = 0;
+        }
+       
+        // Control players horizontal movement
+        if (keys.right.pressed && player.position.x + player.width <= canvas.width - 50) {
+            player.velocity.x = 5;
+            console.log("Move");
+        } else if (keys.left.pressed && player.position.x >= 50) {
+            player.velocity.x = -5;
+        } else {
+            player.velocity.x = 0;
+        }
+        //--
+        // NEW CODE  - PLATFORM COLLISIONS
+        //--
+        // Check for collision between player and platform
+        if (
+    player.position.y + player.height >= platform.position.y &&
+    player.position.y <= platform.position.y + platform.height &&
+    player.position.x + player.width >= platform.position.x &&
+    player.position.x <= platform.position.x + platform.width
+) {
+    player.position.y = platform.position.y - player.height;
+    player.velocity.y = 0;
+    player.jumps = 0;
+}
     }
+
     animate();
     // Event listener for keydown events
     addEventListener('keydown', ({ keyCode }) => {
