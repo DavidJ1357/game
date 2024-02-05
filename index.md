@@ -63,7 +63,7 @@ console.log ("test;"+test)
         }
         // Method to draw the player on the canvas
         draw() {
-            c.fillStyle = 'yellow';
+            c.fillStyle = 'cyan';
             c.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
         // Method to update the player's position and velocity
@@ -84,7 +84,7 @@ console.log ("test;"+test)
                 this.jumps++;
             }
         }
-    }
+    } 
         class Platform {
         constructor(image) {
             // Initial position of the platform
@@ -101,12 +101,32 @@ console.log ("test;"+test)
             c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
         }
     }
+     class BlockObject {
+        constructor(image) {
+            // Initial position of the block object
+            this.position = {
+                x: 200,
+                y: 100
+            };
+            this.image = image;
+            this.width = 158;
+            this.height = 79;
+        }
+        // Method to draw the block object on the canvas
+        draw() {
+            c.drawImage(this.image, this.position.x, this.position.y);
+        }
+    }
     //--
     // NEW CODE - CREATE PLATFORM OBJECT WITH IMAGE
     //--
     // Load platform image
     let image = new Image();
+    let imageBlock = new Image();
+    let blockObject = new BlockObject(imageBlock);
     image.src = 'https://samayass.github.io/samayaCSA/images/platform.png'
+    imageBlock.src = 'https://samayass.github.io/samayaCSA/images/box.png';
+    
     // Create a platform object
     let platform = new Platform(image);
     // Create a player object
@@ -133,11 +153,26 @@ console.log ("test;"+test)
             player.velocity.x = 0;
         }
     
-    platform.draw();
+        platform.draw();
         player.update();
+        blockObject.draw();
+        //--
+        // COLLISIONS BETWEEN BLOCK OBJECT AND PLAYER
+        //--
+        if (
+            player.position.y + player.height <= blockObject.position.y &&
+            player.position.y + player.height + player.velocity.y >= blockObject.position.y &&
+            player.position.x + player.width >= blockObject.position.x &&
+            player.position.x <= blockObject.position.x + blockObject.width
+        )
+        {
+            player.velocity.y = 0;
+        }
+       
         // Control players horizontal movement
         if (keys.right.pressed && player.position.x + player.width <= canvas.width - 50) {
             player.velocity.x = 5;
+            console.log("Move");
         } else if (keys.left.pressed && player.position.x >= 50) {
             player.velocity.x = -5;
         } else {
