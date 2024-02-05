@@ -80,7 +80,7 @@ console.log ("test;"+test)
         }
         jump() {
             if (this.jumps < this.maxJumps) {
-                this.velocity.y -= 20;
+                this.velocity.y -= 50;
                 this.jumps++;
             }
         }
