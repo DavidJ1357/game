@@ -43,7 +43,7 @@ console.log ("test;"+test)
     let gravity = 1.5;
     // Define the Player class
     class Player {
-        constructor() {
+        constructor(image) {
             // Initial position and velocity of the player
             this.position = {
                 x: 100,
@@ -60,11 +60,12 @@ console.log ("test;"+test)
             this.jumps = 0;
             // Maximum allowed jumps
             this.maxJumps = 1;
+
+            this.image = image;
         }
         // Method to draw the player on the canvas
         draw() {
-            c.fillStyle = 'yellow';
-            c.fillRect(this.position.x, this.position.y, this.width, this.height);
+            c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
         }
         // Method to update the player's position and velocity
         update() {
@@ -109,8 +110,11 @@ console.log ("test;"+test)
     image.src = 'https://samayass.github.io/samayaCSA/images/platform.png'
     // Create a platform object
     let platform = new Platform(image);
+    // Load player image
+    let playerImage = new Image();
+    playerImage.src = '{{site.baseurl}}/images/Mario_animation.png'
     // Create a player object
-    player = new Player();
+    player = new Player(playerImage);
     // Define keyboard keys and their states
     let keys = {
         right: {
