@@ -112,7 +112,7 @@ console.log ("test;"+test)
     let platform = new Platform(image);
     // Load player image
     let playerImage = new Image();
-    playerImage.src = '{{site.baseurl}}/images/Mario_animation.png'
+    playerImage.src = '{{site.baseurl}}/images/Mario_run.png'
     // Create a player object
     player = new Player(playerImage);
     // Define keyboard keys and their states
