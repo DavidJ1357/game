@@ -87,6 +87,45 @@ console.log ("test;"+test)
             }
         }
     } 
+    class Enemy {
+        constructor(image) {
+            // Initial position and velocity of the player
+            this.position = {
+                x: 100,
+                y: 200
+            };
+            this.velocity = {
+                x: 0,
+                y: 0
+            };
+            // Dimensions of the player
+            this.width = 30;
+            this.height = 30;
+            // Track the number of jumps
+            this.jumps = 0;
+            // Maximum allowed jumps
+            this.maxJumps = 1;
+
+            this.image = image;
+        }
+        // Method to draw the player on the canvas
+        draw() {
+            c.fillStyle = 'orange';
+            c.fillRect(this.position.x, this.position.y, this.width, this.height);
+        }
+        // Method to update the player's position and velocity
+        update() {
+            this.draw();
+            this.position.y += this.velocity.y;
+            this.position.x += this.velocity.x;
+            if (this.position.y + this.height + this.velocity.y <= canvas.height)
+                this.velocity.y += gravity;
+            else {
+                this.velocity.y = 0;
+                this.jumps = 0; 
+            }
+        }
+    } 
         class Platform {
         constructor(image) {
             // Initial position of the platform
@@ -136,6 +175,7 @@ console.log ("test;"+test)
     playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation'
     // Create a player object
     player = new Player(playerImage);
+    enemy = new Enemy();
     // Define keyboard keys and their states
     let keys = {
         right: {
@@ -160,6 +200,7 @@ console.log ("test;"+test)
     
         platform.draw();
         player.update();
+        enemy.update();
         blockObject.draw();
         //--
         // COLLISIONS BETWEEN BLOCK OBJECT AND PLAYER
@@ -184,6 +225,12 @@ console.log ("test;"+test)
             player.velocity.x = 0;
         }
         //--
+        //Enemy Movement
+        if(enemy.position.x > player.position.x){
+            enemy.velocity.x = -5;
+        }else if(enemy.position.x < player.position.x){
+            enemy.velocity.x = 5;
+        }
         // NEW CODE  - PLATFORM COLLISIONS
         //--
         // Check for collision between player and platform
@@ -196,6 +243,17 @@ console.log ("test;"+test)
     player.position.y = platform.position.y - player.height;
     player.velocity.y = 0;
     player.jumps = 0;
+}
+
+    if (
+    enemy.position.y + player.height >= platform.position.y &&
+    enemy.position.y <= platform.position.y + platform.height &&
+    enemy.position.x + player.width >= platform.position.x &&
+    enemy.position.x <= platform.position.x + platform.width
+) {
+    enemy.position.y = platform.position.y - enemy.height;
+    enemy.velocity.y = 0;
+    enemy.jumps = 0;
 }
     }
 
