@@ -37,8 +37,8 @@ console.log ("test;"+test)
     let canvas = document.getElementById('canvas');
     let c = canvas.getContext('2d');
     // Set the canvas dimensions
-    canvas.width = 700;
-    canvas.height = 450;
+    canvas.width = 850;
+    canvas.height = 525;
     // Define gravity value
     let gravity = 1.5;
     // Define the Player class
