@@ -278,6 +278,21 @@ console.log ("test;"+test)
                 console.log('up');
                 player.jump(); // Call jump method on keypress
                 break;
+            case 37:
+                console.log('left');
+                keys.left.pressed = true;
+                break;
+            case 40:
+                console.log('down');
+                break;
+            case 39:
+                console.log('right');
+                keys.right.pressed = true;
+                break;
+            case 38:
+                console.log('up');
+                player.jump(); // Call jump method on keypress
+                break;
         }
     });
     // Event listener for keyup events
@@ -298,6 +313,7 @@ console.log ("test;"+test)
                 console.log('up');
                 // You can optionally handle key release for jumping, but it's not necessary for this example.
                 break;
+            
         }
     });
 </script>
