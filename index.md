@@ -7,6 +7,7 @@ description: Week 2 hacks
 type: hacks
 courses: { compsci: {week: 2} }
 ---
+
 <style>
   body {
     display: flex;
@@ -81,11 +82,9 @@ console.log ("test;"+test)
         }
         jump() {
             if (this.jumps < this.maxJumps) {
-<<<<<<< HEAD
                 this.velocity.y -= 20;
 =======
                 this.velocity.y -= 30;
->>>>>>> 60a726d4f41fe2be0211ef72760c9451194b1dab
                 this.jumps++;
             }
         }
