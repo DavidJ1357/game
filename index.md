@@ -83,7 +83,6 @@ console.log ("test;"+test)
         jump() {
             if (this.jumps < this.maxJumps) {
                 this.velocity.y -= 20;
-=======
                 this.velocity.y -= 30;
                 this.jumps++;
             }
@@ -174,7 +173,7 @@ console.log ("test;"+test)
     let platform = new Platform(image);
     // Load player image
     let playerImage = new Image();
-    playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation'
+    playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation.png'
     // Create a player object
     player = new Player(playerImage);
     enemy = new Enemy();
