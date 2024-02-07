@@ -133,7 +133,7 @@ console.log ("test;"+test)
     let platform = new Platform(image);
     // Load player image
     let playerImage = new Image();
-    playerImage.src = '{{site.baseurl}}/images/Mario_run.png'
+    playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation'
     // Create a player object
     player = new Player(playerImage);
     // Define keyboard keys and their states
@@ -206,6 +206,7 @@ console.log ("test;"+test)
             case 65:
                 console.log('left');
                 keys.left.pressed = true;
+                
                 break;
             case 83:
                 console.log('down');
