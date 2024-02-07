@@ -134,7 +134,7 @@ console.log ("test;"+test)
                 y: 400
             }
             this.image = image;
-            this.width = 650;
+            this.width = 800;
             this.height = 100;
         }
         // Method to draw the platform on the canvas
