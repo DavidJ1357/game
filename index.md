@@ -18,7 +18,7 @@ courses: { compsci: {week: 2} }
   }
 
   #canvas {
-    background-color: #f0f0f0;
+    background-color: #007FFF;
     border: 1px solid black;
   }
 </style>
@@ -82,7 +82,7 @@ console.log ("test;"+test)
         }
         jump() {
             if (this.jumps < this.maxJumps) {
-                this.velocity.y -= 50;
+                this.velocity.y -= 30;
                 this.jumps++;
             }
         }
@@ -128,7 +128,7 @@ console.log ("test;"+test)
     let blockObject = new BlockObject(imageBlock);
     image.src = 'https://samayass.github.io/samayaCSA/images/platform.png'
     imageBlock.src = 'https://samayass.github.io/samayaCSA/images/box.png';
-    
+
     // Create a platform object
     let platform = new Platform(image);
     // Load player image
@@ -206,7 +206,6 @@ console.log ("test;"+test)
             case 65:
                 console.log('left');
                 keys.left.pressed = true;
-                
                 break;
             case 83:
                 console.log('down');
