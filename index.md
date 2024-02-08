@@ -147,7 +147,7 @@ console.log ("test;"+test)
             // Initial position of the block object
             this.position = {
                 x: 200,
-                y: 100
+                y: 200
             };
             this.image = image;
             this.width = 158;
@@ -206,14 +206,16 @@ console.log ("test;"+test)
         // COLLISIONS BETWEEN BLOCK OBJECT AND PLAYER
         //--
         if (
-            player.position.y + player.height <= blockObject.position.y &&
-            player.position.y + player.height + player.velocity.y >= blockObject.position.y &&
-            player.position.x + player.width >= blockObject.position.x &&
-            player.position.x <= blockObject.position.x + blockObject.width
-        )
-        {
-            player.velocity.y = 0;
-        }
+    player.position.y + player.height >= blockObject.position.y &&
+    player.position.y <= blockObject.position.y + blockObject.height &&
+    player.position.x + player.width >= blockObject.position.x &&
+    player.position.x <= blockObject.position.x + blockObject.width
+) {
+    player.velocity.y = 0; // Stop player from falling through the block
+    player.position.y = blockObject.position.y - player.height; // Align player's position with top of block
+    player.jumps = 0; // Reset jumps
+}
+
        
         // Control players horizontal movement
         if (keys.right.pressed && player.position.x + player.width <= canvas.width - 50) {
