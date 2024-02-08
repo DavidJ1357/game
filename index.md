@@ -131,10 +131,10 @@ console.log ("test;"+test)
             // Initial position of the platform
             this.position = {
                 x: 0,
-                y: 400
+                y: 450
             }
             this.image = image;
-            this.width = 800;
+            this.width = 850;
             this.height = 100;
         }
         // Method to draw the platform on the canvas
