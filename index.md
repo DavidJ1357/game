@@ -17,7 +17,7 @@ courses: { compsci: {week: 2} }
   }
 
   #canvas {
-    background-color: #f0f0f0;
+    background-color: #007FFF;
     border: 1px solid black;
   }
 </style>
@@ -81,7 +81,11 @@ console.log ("test;"+test)
         }
         jump() {
             if (this.jumps < this.maxJumps) {
+<<<<<<< HEAD
                 this.velocity.y -= 20;
+=======
+                this.velocity.y -= 30;
+>>>>>>> 60a726d4f41fe2be0211ef72760c9451194b1dab
                 this.jumps++;
             }
         }
@@ -127,7 +131,7 @@ console.log ("test;"+test)
     let blockObject = new BlockObject(imageBlock);
     image.src = 'https://samayass.github.io/samayaCSA/images/platform.png'
     imageBlock.src = 'https://samayass.github.io/samayaCSA/images/box.png';
-    
+
     // Create a platform object
     let platform = new Platform(image);
     // Load player image
