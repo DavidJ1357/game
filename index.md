@@ -82,7 +82,7 @@ console.log ("test;"+test)
         }
         jump() {
             if (this.jumps < this.maxJumps) {
-                this.velocity.y -= 20;
+                this.velocity.y -= 30;
                 this.jumps++;
             }
         }
@@ -134,7 +134,7 @@ console.log ("test;"+test)
                 y: 400
             }
             this.image = image;
-            this.width = 650;
+            this.width = 800;
             this.height = 100;
         }
         // Method to draw the platform on the canvas
