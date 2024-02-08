@@ -7,7 +7,6 @@ description: Week 2 hacks
 type: hacks
 courses: { compsci: {week: 2} }
 ---
-
 <style>
   body {
     display: flex;
@@ -82,7 +81,7 @@ console.log ("test;"+test)
         }
         jump() {
             if (this.jumps < this.maxJumps) {
-                this.velocity.y -= 50;
+                this.velocity.y -= 20;
                 this.jumps++;
             }
         }
@@ -206,7 +205,6 @@ console.log ("test;"+test)
             case 65:
                 console.log('left');
                 keys.left.pressed = true;
-                
                 break;
             case 83:
                 console.log('down');
