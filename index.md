@@ -82,7 +82,7 @@ console.log ("test;"+test)
         }
         jump() {
             if (this.jumps < this.maxJumps) {
-                this.velocity.y -= 20;
+                this.velocity.y -= 30;
                 this.jumps++;
             }
         }
@@ -147,7 +147,7 @@ console.log ("test;"+test)
             // Initial position of the block object
             this.position = {
                 x: 200,
-                y: 200
+                y: 250
             };
             this.image = image;
             this.width = 158;
@@ -205,16 +205,27 @@ console.log ("test;"+test)
         //--
         // COLLISIONS BETWEEN BLOCK OBJECT AND PLAYER
         //--
-        if (
+        // Check for collision between player and block object
+// Check for collision between player and block object
+if (
     player.position.y + player.height >= blockObject.position.y &&
     player.position.y <= blockObject.position.y + blockObject.height &&
     player.position.x + player.width >= blockObject.position.x &&
     player.position.x <= blockObject.position.x + blockObject.width
 ) {
-    player.velocity.y = 0; // Stop player from falling through the block
-    player.position.y = blockObject.position.y - player.height; // Align player's position with top of block
-    player.jumps = 0; // Reset jumps
+    if (player.position.y + player.height <= blockObject.position.y + blockObject.height / 4) {
+        // Stop player from falling through the block
+        player.velocity.y = 0;
+        player.position.y = blockObject.position.y - player.height; // Align player's position with top of block
+        player.jumps = 0; // Reset jumps
+    } else if (player.position.y >= blockObject.position.y + blockObject.height / 4) {
+        // Check if player is colliding with the bottom half of the block
+        // Reset player's vertical velocity to simulate falling back down
+        player.velocity.y = 0;
+    }
 }
+
+
 
        
         // Control players horizontal movement
@@ -311,7 +322,6 @@ console.log ("test;"+test)
                 break;
             case 87:
                 console.log('up');
-                // You can optionally handle key release for jumping, but it's not necessary for this example.
                 break;
             
         }
