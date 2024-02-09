@@ -38,7 +38,7 @@ console.log ("test;"+test)
     let c = canvas.getContext('2d');
     // Set the canvas dimensions
     canvas.width = 850;
-    canvas.height = 525;
+    canvas.height = 850;
     // Define gravity value
     let gravity = 1.5;
     // Define the Player class
@@ -82,7 +82,7 @@ console.log ("test;"+test)
         }
         jump() {
             if (this.jumps < this.maxJumps) {
-                this.velocity.y -= 30;
+                this.velocity.y -= 20;
                 this.jumps++;
             }
         }
@@ -131,7 +131,7 @@ console.log ("test;"+test)
             // Initial position of the platform
             this.position = {
                 x: 0,
-                y: 450
+                y: 800
             }
             this.image = image;
             this.width = 850;
