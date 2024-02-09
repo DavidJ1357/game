@@ -82,11 +82,7 @@ console.log ("test;"+test)
         }
         jump() {
             if (this.jumps < this.maxJumps) {
-<<<<<<< HEAD
                 this.velocity.y -= 25;
-=======
-                this.velocity.y -= 30;
->>>>>>> fc281b5642a86cb9f13ee5a0c4ac2d780bd75431
                 this.jumps++;
             }
         }
