@@ -82,7 +82,7 @@ console.log ("test;"+test)
         }
         jump() {
             if (this.jumps < this.maxJumps) {
-                this.velocity.y -= 30;
+                this.velocity.y -= 20;
                 this.jumps++;
             }
         }
@@ -150,8 +150,8 @@ console.log ("test;"+test)
                 y: 250
             };
             this.image = image;
-            this.width = 158;
-            this.height = 79;
+            this.width = 90;
+            this.height = 28;
         }
         // Method to draw the block object on the canvas
         draw() {
@@ -165,7 +165,7 @@ console.log ("test;"+test)
     let image = new Image();
     let imageBlock = new Image();
     let blockObject = new BlockObject(imageBlock);
-    image.src = 'https://samayass.github.io/samayaCSA/images/platform.png'
+    image.src = '{{site.baseurl}}/images/platform.png'
     imageBlock.src = 'https://samayass.github.io/samayaCSA/images/box.png';
 
     // Create a platform object
