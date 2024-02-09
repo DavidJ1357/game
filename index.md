@@ -37,8 +37,8 @@ console.log ("test;"+test)
     let canvas = document.getElementById('canvas');
     let c = canvas.getContext('2d');
     // Set the canvas dimensions
-    canvas.width = 700;
-    canvas.height = 450;
+    canvas.width = 850;
+    canvas.height = 525;
     // Define gravity value
     let gravity = 1.5;
     // Define the Player class
@@ -82,7 +82,11 @@ console.log ("test;"+test)
         }
         jump() {
             if (this.jumps < this.maxJumps) {
+<<<<<<< HEAD
                 this.velocity.y -= 25;
+=======
+                this.velocity.y -= 30;
+>>>>>>> fc281b5642a86cb9f13ee5a0c4ac2d780bd75431
                 this.jumps++;
             }
         }
@@ -131,10 +135,10 @@ console.log ("test;"+test)
             // Initial position of the platform
             this.position = {
                 x: 0,
-                y: 400
+                y: 450
             }
             this.image = image;
-            this.width = 650;
+            this.width = 850;
             this.height = 100;
         }
         // Method to draw the platform on the canvas
@@ -289,6 +293,21 @@ if (
                 console.log('up');
                 player.jump(); // Call jump method on keypress
                 break;
+            case 37:
+                console.log('left');
+                keys.left.pressed = true;
+                break;
+            case 40:
+                console.log('down');
+                break;
+            case 39:
+                console.log('right');
+                keys.right.pressed = true;
+                break;
+            case 38:
+                console.log('up');
+                player.jump(); // Call jump method on keypress
+                break;
         }
     });
     // Event listener for keyup events
@@ -308,6 +327,7 @@ if (
             case 87:
                 console.log('up');
                 break;
+            
         }
     });
 </script>
