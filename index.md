@@ -152,18 +152,18 @@ console.log ("test;"+test)
         }
     }
     class GenericObject {
-        constructor({ x, y, image }) {
+        constructor({ x, y, image, width, height }) {
             this.position = {
                 x,
                 y
             };
             this.image = image;
-            this.width = 760;
-            this.height = 200;
+            this.width = width;
+            this.height = height;
         }
         // Method to draw the generic object on the canvas
         draw() {
-            c.drawImage(this.image, this.position.x, this.position.y);
+            c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height); 
         }
     }
     //--
@@ -187,7 +187,7 @@ console.log ("test;"+test)
     // Load player image
     let genericObjects = [
         new GenericObject({
-            x:0, y:0, image: imageBackground
+            x:0, y:0, image: imageBackground, width:850,height:850
         }),
         new GenericObject({
             x:0, y:70, image: imageHills
