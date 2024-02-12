@@ -127,7 +127,7 @@ console.log ("test;"+test)
             }
             this.image = image;
             this.width = 850;
-            this.height = 100;
+            this.height = 200;
         }
         // Method to draw the platform on the canvas
         draw() {
@@ -158,7 +158,7 @@ console.log ("test;"+test)
             };
             this.image = image;
             this.width = 760;
-            this.height = 82;
+            this.height = 200;
         }
         // Method to draw the generic object on the canvas
         draw() {
@@ -175,9 +175,9 @@ console.log ("test;"+test)
     let imageBackground = new Image();
     let imageHills = new Image();
     
-    image.src = 'https://samayass.github.io/samayaCSA/images/platform.png'
+    image.src = '{{site.baseurl}}/images/platform.png'
     imageBlock.src = '{{site.baseurl}}/images/lava.png';
-    imageBackground.src = '{{site.baseurl}}/images/bg.jpg';
+    imageBackground.src = '{{site.baseurl}}/images/brickwall.webp';
     let playerImage = new Image();
     playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation.png'
 
