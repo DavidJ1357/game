@@ -13,6 +13,7 @@ courses: { compsci: {week: 2} }
         margin: 0;
         border: 1px solid white;
     }
+  
 </style>
 
 <canvas id='canvas'></canvas>
@@ -134,6 +135,9 @@ console.log ("test;"+test)
             c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
         }
     }
+   
+    
+
      class BlockObject {
         constructor(image) {
             // Initial position of the block object
@@ -180,6 +184,52 @@ console.log ("test;"+test)
     imageBackground.src = '{{site.baseurl}}/images/brickwall.webp';
     let playerImage = new Image();
     playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation.png'
+    // Create a platform object
+    let platform1 = new Platform(image);
+    // Load player image
+    let playerImage1 = new Image();
+    playerImage1.src = '{{site.baseurl}}/images/Andrew_anime_Animation.png'
+      // Create a player object
+    player = new Player(playerImage);
+    enemy = new Enemy();
+    // Define keyboard keys and their states
+    let keys = {
+        right: {
+            pressed: false
+        },
+        left: {
+            pressed: false
+        }
+    };
+    // Animation function to continuously update and render the canvas
+    function animate() {
+        requestAnimationFrame(animate);
+        c.clearRect(0, 0, canvas.width, canvas.height);
+        player.update();
+        if (keys.right.pressed && player.position.x + player.width <= canvas.width - 50) {
+            player.velocity.x = 5;
+        } else if (keys.left.pressed && player.position.x >= 50) {
+            player.velocity.x = -5;
+        } else {
+            player.velocity.x = 0;
+        }
+    
+        platform.draw();
+        player.update();
+        enemy.update();
+        blockObject.draw();
+        //--
+        // COLLISIONS BETWEEN BLOCK OBJECT AND PLAYER
+        //--
+        if (
+    player.position.y + player.height >= blockObject.position.y &&
+    player.position.y <= blockObject.position.y + blockObject.height &&
+    player.position.x + player.width >= blockObject.position.x &&
+    player.position.x <= blockObject.position.x + blockObject.width
+) {
+    player.velocity.y = 0; // Stop player from falling through the block
+    player.position.y = blockObject.position.y - player.height; // Align player's position with top of block
+    player.jumps = 0; // Reset jumps
 
     // Create a platform object
     let platform = new Platform(image);
