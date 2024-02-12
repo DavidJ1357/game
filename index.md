@@ -18,6 +18,7 @@ courses: { compsci: {week: 2} }
 <canvas id='canvas'></canvas>
 
 <script>
+
 var test = 0
 console.log ("test;"+test)
 
@@ -260,9 +261,9 @@ if (
         //--
         //Enemy Movement
         if(enemy.position.x > player.position.x){
-            enemy.velocity.x = -5;
+            enemy.velocity.x = -3;
         }else if(enemy.position.x < player.position.x){
-            enemy.velocity.x = 5;
+            enemy.velocity.x = 3;
         }
         // NEW CODE  - PLATFORM COLLISIONS
         //--
