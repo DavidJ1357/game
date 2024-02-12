@@ -9,18 +9,10 @@ courses: { compsci: {week: 2} }
 ---
 
 <style>
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-  }
-
-  #canvas {
-    background-color: #007FFF;
-    border: 1px solid black;
-  }
+    #canvas {
+        margin: 0;
+        border: 1px solid white;
+    }
   
 </style>
 
@@ -38,8 +30,8 @@ console.log ("test;"+test)
     let canvas = document.getElementById('canvas');
     let c = canvas.getContext('2d');
     // Set the canvas dimensions
-    canvas.width = 700;
-    canvas.height = 450;
+    canvas.width = 850;
+    canvas.height = 850;
     // Define gravity value
     let gravity = 1.5;
     // Define the Player class
@@ -131,12 +123,12 @@ console.log ("test;"+test)
         constructor(image) {
             // Initial position of the platform
             this.position = {
-                x: -12,
-                y: 350
+                x: 0,
+                y: 800
             }
             this.image = image;
-            this.width = 650;
-            this.height = 100;
+            this.width = 850;
+            this.height = 200;
         }
         // Method to draw the platform on the canvas
         draw() {
@@ -151,13 +143,28 @@ console.log ("test;"+test)
             // Initial position of the block object
             this.position = {
                 x: 200,
-                y: 200
+                y: 250
             };
             this.image = image;
             this.width = 158;
             this.height = 79;
         }
         // Method to draw the block object on the canvas
+        draw() {
+            c.drawImage(this.image, this.position.x, this.position.y);
+        }
+    }
+    class GenericObject {
+        constructor({ x, y, image }) {
+            this.position = {
+                x,
+                y
+            };
+            this.image = image;
+            this.width = 760;
+            this.height = 200;
+        }
+        // Method to draw the generic object on the canvas
         draw() {
             c.drawImage(this.image, this.position.x, this.position.y);
         }
@@ -169,8 +176,14 @@ console.log ("test;"+test)
     let image = new Image();
     let imageBlock = new Image();
     let blockObject = new BlockObject(imageBlock);
-    image.src = 'https://samayass.github.io/samayaCSA/images/platform.png'
-    imageBlock.src = 'https://samayass.github.io/samayaCSA/images/box.png';
+    let imageBackground = new Image();
+    let imageHills = new Image();
+    
+    image.src = '{{site.baseurl}}/images/platform.png'
+    imageBlock.src = '{{site.baseurl}}/images/lava.png';
+    imageBackground.src = '{{site.baseurl}}/images/brickwall.webp';
+    let playerImage = new Image();
+    playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation.png'
     // Create a platform object
     let platform1 = new Platform(image);
     // Load player image
@@ -221,8 +234,14 @@ console.log ("test;"+test)
     // Create a platform object
     let platform = new Platform(image);
     // Load player image
-    let playerImage = new Image();
-    playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation.png'
+    let genericObjects = [
+        new GenericObject({
+            x:0, y:0, image: imageBackground
+        }),
+        new GenericObject({
+            x:0, y:70, image: imageHills
+        }),
+    ];
     // Create a player object
     player = new Player(playerImage);
     enemy = new Enemy();
@@ -247,7 +266,9 @@ console.log ("test;"+test)
         } else {
             player.velocity.x = 0;
         }
-    
+        genericObjects.forEach(genericObject => {
+            genericObject.draw()
+        });
         platform.draw();
         player.update();
         enemy.update();
@@ -255,27 +276,37 @@ console.log ("test;"+test)
         //--
         // COLLISIONS BETWEEN BLOCK OBJECT AND PLAYER
         //--
-        if (
+        // Check for collision between player and block object
+// Check for collision between player and block object
+// Check for collision between player and block object
+if (
     player.position.y + player.height >= blockObject.position.y &&
     player.position.y <= blockObject.position.y + blockObject.height &&
     player.position.x + player.width >= blockObject.position.x &&
     player.position.x <= blockObject.position.x + blockObject.width
 ) {
-    player.velocity.y = 0; // Stop player from falling through the block
-    player.position.y = blockObject.position.y - player.height; // Align player's position with top of block
-    player.jumps = 0; // Reset jumps
+    if (player.position.y + player.height <= blockObject.position.y + blockObject.height / 4) {
+        // Stop player from falling through the block
+        player.velocity.y = 0;
+        player.position.y = blockObject.position.y - player.height; // Align player's position with top of block
+        player.jumps = 0; // Reset jumps
+    } else if (player.position.y >= blockObject.position.y + blockObject.height / 4) {
+        // Check if player is colliding with the bottom half of the block
+        // Reset player's vertical velocity to simulate falling back down
+        player.velocity.y = 0;
+    }
+
+    // Check if player is colliding with the left side of the block
+    if (
+        player.position.y + player.height > blockObject.position.y &&
+        player.position.y < blockObject.position.y + blockObject.height &&
+        player.position.x + player.width / 2 > blockObject.position.x &&
+        player.position.x < blockObject.position.x + blockObject.width / 2
+    ) {
+        player.position.x = blockObject.position.x - player.width; // Align player's position with left side of block
+    }
 }
 
-       
-        // Control players horizontal movement
-        if (keys.right.pressed && player.position.x + player.width <= canvas.width - 50) {
-            player.velocity.x = 5;
-            console.log("Move");
-        } else if (keys.left.pressed && player.position.x >= 50) {
-            player.velocity.x = -5;
-        } else {
-            player.velocity.x = 0;
-        }
         //--
         //Enemy Movement
         if(enemy.position.x > player.position.x){
@@ -328,6 +359,21 @@ console.log ("test;"+test)
                 console.log('up');
                 player.jump(); // Call jump method on keypress
                 break;
+            case 37:
+                console.log('left');
+                keys.left.pressed = true;
+                break;
+            case 40:
+                console.log('down');
+                break;
+            case 39:
+                console.log('right');
+                keys.right.pressed = true;
+                break;
+            case 38:
+                console.log('up');
+                player.jump(); // Call jump method on keypress
+                break;
         }
     });
     // Event listener for keyup events
@@ -346,8 +392,8 @@ console.log ("test;"+test)
                 break;
             case 87:
                 console.log('up');
-                // You can optionally handle key release for jumping, but it's not necessary for this example.
                 break;
+            
         }
     });
 </script>
