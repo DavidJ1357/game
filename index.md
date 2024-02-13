@@ -170,7 +170,7 @@ console.log ("test;"+test)
     let imageBackground = new Image();
     let imageHills = new Image();
     let enemyImage = new Image();
-    enemyImage.src = '{{site.baseurl}}/images/Untitled.png';
+    enemyImage.src = '{{site.baseurl}}/images/Slime.png';
 
     
     image.src = '{{site.baseurl}}/images/platform.png'
