@@ -29,8 +29,8 @@ console.log ("test;"+test)
     let canvas = document.getElementById('canvas');
     let c = canvas.getContext('2d');
     // Set the canvas dimensions
-    canvas.width = 850;
-    canvas.height = 850;
+    canvas.width = 800;
+    canvas.height = 500;
     // Define gravity value
     let gravity = 1.5;
     // Define the Player class
@@ -177,7 +177,7 @@ console.log ("test;"+test)
     
     image.src = '{{site.baseurl}}/images/platform.png'
     imageBlock.src = '{{site.baseurl}}/images/lava.png';
-    imageBackground.src = '{{site.baseurl}}/images/brickwall.webp';
+    imageBackground.src = '{{site.baseurl}}/images/streetfighter.jpg';
     let playerImage = new Image();
     playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation.png'
 
@@ -186,7 +186,7 @@ console.log ("test;"+test)
     // Load player image
     let genericObjects = [
         new GenericObject({
-            x:0, y:0, image: imageBackground, width:850,height:850
+            x:0, y:0, image: imageBackground, width:800,height:500
         }),
         new GenericObject({
             x:0, y:70, image: imageHills
