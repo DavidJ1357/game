@@ -118,7 +118,7 @@ console.log ("test;"+test)
             // Initial position of the platform
             this.position = {
                 x: 0,
-                y: 800
+                y: 470
             }
             this.image = image;
             this.width = 850;
@@ -174,7 +174,7 @@ console.log ("test;"+test)
 
     
     image.src = '{{site.baseurl}}/images/platform.png'
-    imageBlock.src = '{{site.baseurl}}/images/lava.png';
+    imageBlock.src = '{{site.baseurl}}/images/platform (1).jpg';
     imageBackground.src = '{{site.baseurl}}/images/streetfighter.jpg';
     let playerImage = new Image();
     playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation.png'
