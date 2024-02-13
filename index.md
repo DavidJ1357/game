@@ -80,45 +80,39 @@ console.log ("test;"+test)
             }
         }
     } 
-    class Enemy {
-        constructor(image) {
-            // Initial position and velocity of the player
-            this.position = {
-                x: 100,
-                y: 200
-            };
-            this.velocity = {
-                x: 0,
-                y: 0
-            };
-            // Dimensions of the player
-            this.width = 30;
-            this.height = 30;
-            // Track the number of jumps
-            this.jumps = 0;
-            // Maximum allowed jumps
-            this.maxJumps = 1;
-
-            this.image = image;
+   class Enemy {
+    constructor(image) {
+        // Initial position and velocity of the enemy
+        this.position = {
+            x: 100,
+            y: 200
+        };
+        this.velocity = {
+            x: 0,
+            y: 0
+        };
+        // Dimensions of the enemy
+        this.width = 30;
+        this.height = 30;
+        // Enemy image
+        this.image = enemyImage;
+    }
+    // Method to draw the enemy on the canvas
+    draw() {
+        c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+    }
+    // Method to update the enemy's position and velocity
+    update() {
+        this.draw();
+        this.position.y += this.velocity.y;
+        this.position.x += this.velocity.x;
+        if (this.position.y + this.height + this.velocity.y <= canvas.height)
+            this.velocity.y += gravity;
+        else {
+            this.velocity.y = 0;
         }
-        // Method to draw the player on the canvas
-        draw() {
-            c.fillStyle = 'orange';
-            c.fillRect(this.position.x, this.position.y, this.width, this.height);
-        }
-        // Method to update the player's position and velocity
-        update() {
-            this.draw();
-            this.position.y += this.velocity.y;
-            this.position.x += this.velocity.x;
-            if (this.position.y + this.height + this.velocity.y <= canvas.height)
-                this.velocity.y += gravity;
-            else {
-                this.velocity.y = 0;
-                this.jumps = 0; 
-            }
-        }
-    } 
+    }
+}
         class Platform {
         constructor(image) {
             // Initial position of the platform
@@ -175,6 +169,9 @@ console.log ("test;"+test)
     let blockObject = new BlockObject(imageBlock);
     let imageBackground = new Image();
     let imageHills = new Image();
+    let enemyImage = new Image();
+    enemyImage.src = '{{site.baseurl}}/images/Untitled.png';
+
     
     image.src = '{{site.baseurl}}/images/platform.png'
     imageBlock.src = '{{site.baseurl}}/images/lava.png';
