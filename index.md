@@ -235,13 +235,13 @@ if (
 ) {
     if (player.position.y + player.height <= blockObject.position.y + blockObject.height / 4) {
         // Stop player from falling through the block
-        player.velocity.y = 0;
+        player.velocity.y = 4;
         player.position.y = blockObject.position.y - player.height; // Align player's position with top of block
         player.jumps = 0; // Reset jumps
     } else if (player.position.y >= blockObject.position.y + blockObject.height / 4) {
         // Check if player is colliding with the bottom half of the block
         // Reset player's vertical velocity to simulate falling back down
-        player.velocity.y = 0;
+        player.velocity.y = 4;
     }
 }
 
