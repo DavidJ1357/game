@@ -93,7 +93,7 @@ console.log ("test;"+test)
         };
         // Dimensions of the enemy
         this.width = 60;
-        this.height = 60;
+        this.height = 100;
         // Enemy image
         this.image = enemyImage;
     }
