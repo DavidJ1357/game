@@ -85,7 +85,7 @@ console.log ("test;"+test)
         // Initial position and velocity of the enemy
         this.position = {
             x: 100,
-            y: 200
+            y: 150
         };
         this.velocity = {
             x: 0,
@@ -93,7 +93,7 @@ console.log ("test;"+test)
         };
         // Dimensions of the enemy
         this.width = 60;
-        this.height = 100;
+        this.height = 60;
         // Enemy image
         this.image = enemyImage;
     }
