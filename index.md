@@ -90,7 +90,7 @@ console.log ("test;"+test)
         this.velocity = {
             x: 0,
             y: 0
-        };k6
+        };
         // Dimensions of the enemy
         this.width = 60;
         this.height = 60;
