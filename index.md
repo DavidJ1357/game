@@ -174,7 +174,7 @@ console.log ("test;"+test)
 
     
     image.src = '{{site.baseurl}}/images/platform.png'
-    imageBlock.src = '{{site.baseurl}}/images/platform (1).jpg';
+    imageBlock.src = '{{site.baseurl}}/images/wood (6).jpg';
     imageBackground.src = '{{site.baseurl}}/images/streetfighter.jpg';
     let playerImage = new Image();
     playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation.png'
