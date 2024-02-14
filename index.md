@@ -16,7 +16,11 @@ courses: { compsci: {week: 2} }
 </style>
 
 <canvas id='canvas'></canvas>
+ <button id="button">
+        <i class="fas fa-volume-up"></i>
+    </button>
 
+    <audio src="path/to/your/audio/file.mp3"></audio>
 <script>
 
 var test = 0
@@ -334,4 +338,22 @@ if (
             
         }
     });
+const button = document.querySelector("#button");
+const icon = document.querySelector("#button > i");
+const audio = new Audio('{{site.baseurl}}/images/Streetfighter.mp3');
+
+button.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.volume = 0.2;
+    audio.play();
+    icon.classList.remove('fa-volume-up');
+    icon.classList.add('fa-volume-mute');
+    
+  } else {
+    audio.pause();
+    icon.classList.remove('fa-volume-mute');
+    icon.classList.add('fa-volume-up');o
+  }
+  button.classList.add("fade");
+});
 </script>
