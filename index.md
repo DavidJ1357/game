@@ -58,7 +58,7 @@ console.log ("test;"+test)
         }
         // Method to draw the player on the canvas
         draw() {
-            c.fillStyle = 'cyan';
+            c.fillStyle = 'black';
             c.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
         // Method to update the player's position and velocity
@@ -92,8 +92,8 @@ console.log ("test;"+test)
             y: 0
         };
         // Dimensions of the enemy
-        this.width = 100;
-        this.height = 100;
+        this.width = 60;
+        this.height = 60;
         // Enemy image
         this.image = enemyImage;
     }
@@ -118,7 +118,7 @@ console.log ("test;"+test)
             // Initial position of the platform
             this.position = {
                 x: 0,
-                y: 470
+                y: 480
             }
             this.image = image;
             this.width = 850;
@@ -170,7 +170,7 @@ console.log ("test;"+test)
     let imageBackground = new Image();
     let imageHills = new Image();
     let enemyImage = new Image();
-    enemyImage.src = '{{site.baseurl}}/images/Slime.png';
+    enemyImage.src = '{{site.baseurl}}/images/robot.png';
 
     
     image.src = '{{site.baseurl}}/images/platform.png'
