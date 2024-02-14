@@ -172,7 +172,7 @@ console.log ("test;"+test)
     let enemyImage = new Image();
     enemyImage.src = '{{site.baseurl}}/images/robot.png';
 
-    
+    imgsrc="{{site.baseurl}}/images/arrow.png" id="arrow" style="display:none;">
     image.src = '{{site.baseurl}}/images/platform.png'
     imageBlock.src = '{{site.baseurl}}/images/wood (6).jpg';
     imageBackground.src = '{{site.baseurl}}/images/streetfighter.jpg';
