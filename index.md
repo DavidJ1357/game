@@ -243,16 +243,6 @@ if (
         // Reset player's vertical velocity to simulate falling back down
         player.velocity.y = 0;
     }
-
-    // Check if player is colliding with the left side of the block
-    if (
-        player.position.y + player.height > blockObject.position.y &&
-        player.position.y < blockObject.position.y + blockObject.height &&
-        player.position.x + player.width / 2 > blockObject.position.x &&
-        player.position.x < blockObject.position.x + blockObject.width / 2
-    ) {
-        player.position.x = blockObject.position.x - player.width; // Align player's position with left side of block
-    }
 }
 
         //--
