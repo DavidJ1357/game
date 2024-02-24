@@ -72,6 +72,10 @@ console.log ("test;"+test)
                 this.velocity.y = 0;
                 this.jumps = 0; 
             }
+            if (this.arrow) {
+            this.arrow.update();
+            this.arrow.draw();
+        }
         }
         jump() {
             if (this.jumps < this.maxJumps) {
@@ -79,7 +83,42 @@ console.log ("test;"+test)
                 this.jumps++;
             }
         }
-    } 
+                fireArrow() {
+        if (!this.arrow) {
+            this.arrow = new Arrow(arrowImage, this.position.x + this.width / 2, this.position.y + this.height / 2, this.position, this.velocity);
+        }
+        this.arrow.fire();
+    }
+
+    }
+
+ class Arrow {
+    constructor(image, x, y, playerPosition, playerVelocity) {
+        this.position = { x: x, y: y };
+        this.velocity = { x: playerVelocity.x * 2, y: 0 };
+        this.image = image;
+        this.width = 30;
+        this.height = 10;
+        this.playerPosition = playerPosition;
+        this.playerVelocity = playerVelocity;
+    }
+
+    draw() {
+        c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
+    }
+
+    update() {
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
+        if (this.position.x > canvas.width || this.position.y > canvas.height) {
+            arrowImage.style.display = 'none';
+        }
+    }
+
+    fire() {
+        arrowImage.style.display = 'block';
+    }
+}
    class Enemy {
     constructor(image) {
         // Initial position and velocity of the enemy
@@ -170,6 +209,7 @@ console.log ("test;"+test)
     let imageBackground = new Image();
     let imageHills = new Image();
     let enemyImage = new Image();
+    let arrowImage = new Image()
     enemyImage.src = '{{site.baseurl}}/images/robot.png';
 
     
@@ -217,9 +257,14 @@ console.log ("test;"+test)
         genericObjects.forEach(genericObject => {
             genericObject.draw()
         });
+        let arrow = new Arrow(arrowImage, player.position.x + player.width / 2, player.position.y + player.height / 2);
+        arrow.update();
+        arrow.draw();
+
         platform.draw();
         player.update();
         enemy.update();
+    
         blockObject.draw();
         //--
         // COLLISIONS BETWEEN BLOCK OBJECT AND PLAYER
@@ -282,6 +327,10 @@ if (
     // Event listener for keydown events
     addEventListener('keydown', ({ keyCode }) => {
         switch (keyCode) {
+            case 87:
+                console.log('up');
+                player.jump(); // Call jump method on keypress
+                break;
             case 65:
                 console.log('left');
                 keys.left.pressed = true;
@@ -293,24 +342,9 @@ if (
                 console.log('right');
                 keys.right.pressed = true;
                 break;
-            case 87:
-                console.log('up');
-                player.jump(); // Call jump method on keypress
-                break;
-            case 37:
-                console.log('left');
-                keys.left.pressed = true;
-                break;
-            case 40:
-                console.log('down');
-                break;
-            case 39:
-                console.log('right');
-                keys.right.pressed = true;
-                break;
-            case 38:
-                console.log('up');
-                player.jump(); // Call jump method on keypress
+                case 32:
+                console.log('space');
+                player.fireArrow();
                 break;
         }
     });
