@@ -16,11 +16,7 @@ courses: { compsci: {week: 2} }
 </style>
 
 <canvas id='canvas'></canvas>
- <button id="button">
-        <i class="fas fa-volume-up"></i>
-    </button>
 
-    <audio src="path/to/your/audio/file.mp3"></audio>
 <script>
 
 var test = 0
@@ -338,6 +334,7 @@ if (
             
         }
     });
+
 const button = document.querySelector("#button");
 const icon = document.querySelector("#button > i");
 const audio = new Audio('{{site.baseurl}}/images/Streetfighter.mp3');
