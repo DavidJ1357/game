@@ -92,7 +92,7 @@ console.log ("test;"+test)
             y: 0
         };
         // Dimensions of the enemy
-        this.width = 60;
+        this.width = 40;
         this.height = 60;
         // Enemy image
         this.image = enemyImage;
@@ -173,11 +173,11 @@ console.log ("test;"+test)
     enemyImage.src = '{{site.baseurl}}/images/robot.png';
 
     
-    image.src = '{{site.baseurl}}/images/platform.png'
+    image.src = '{{site.baseurl}}/images/platform.png';
     imageBlock.src = '{{site.baseurl}}/images/wood (6).jpg';
     imageBackground.src = '{{site.baseurl}}/images/streetfighter.jpg';
     let playerImage = new Image();
-    playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation.png'
+    playerImage.src = '{{site.baseurl}}/images/Andrew_anime_Animation.png';
 
     // Create a platform object
     let platform = new Platform(image);
@@ -335,22 +335,24 @@ if (
         }
     });
 
-const button = document.querySelector("#button");
-const icon = document.querySelector("#button > i");
 const audio = new Audio('{{site.baseurl}}/images/Streetfighter.mp3');
 
+// Event listener for button click to toggle music
+const button = document.querySelector("#button");
+const icon = document.querySelector("#button > i");
+
 button.addEventListener("click", () => {
-  if (audio.paused) {
-    audio.volume = 0.2;
-    audio.play();
-    icon.classList.remove('fa-volume-up');
-    icon.classList.add('fa-volume-mute');
-    
-  } else {
-    audio.pause();
-    icon.classList.remove('fa-volume-mute');
-    icon.classList.add('fa-volume-up');o
-  }
-  button.classList.add("fade");
-});
+    if (backgroundMusic.paused) {
+        backgroundMusic.volume = 0.2;
+        backgroundMusic.play();
+        icon.classList.remove('fa-volume-up');
+        icon.classList.add('fa-volume-mute');
+    } else {
+        backgroundMusic.pause();
+        icon.classList.remove('fa-volume-mute');
+        icon.classList.add('fa-volume-up');
+    }
+    button.classList.add("fade");
+}); 
+
 </script>
