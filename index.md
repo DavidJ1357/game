@@ -55,6 +55,10 @@ console.log ("test;"+test)
             this.maxJumps = 1;
 
             this.image = image;
+
+            this.arrow = null; // Instead of defining arrow directly, we'll use this property to hold the arrow object
+
+            this.image = image;
         }
         // Method to draw the player on the canvas
         draw() {
@@ -231,9 +235,7 @@ console.log ("test;"+test)
         genericObjects.forEach(genericObject => {
             genericObject.draw()
         });
-        let arrow = new Arrow(arrowImage, player.position.x + player.width / 2, player.position.y + player.height / 2);
-        arrow.update();
-        arrow.draw();
+        
 
         platform.draw();
         player.update();
