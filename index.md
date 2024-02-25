@@ -16,11 +16,7 @@ courses: { compsci: {week: 2} }
 </style>
 
 <canvas id='canvas'></canvas>
- <button id="button">
-        <i class="fas fa-volume-up"></i>
-    </button>
 
-    <audio src="path/to/your/audio/file.mp3"></audio>
 <script>
 
 var test = 0
@@ -89,40 +85,14 @@ console.log ("test;"+test)
         }
                 fireArrow() {
         if (!this.arrow) {
-            this.arrow = new Arrow(arrowImage, this.position.x + this.width / 2, this.position.y + this.height / 2, this.position, this.velocity);
+            let arrow = new Arrow(image, player.position.x + player.width / 2, player.position.y + player.height / 2);
         }
         this.arrow.fire();
     }
 
     }
 
- class Arrow {
-    constructor(image, x, y, playerPosition, playerVelocity) {
-        this.position = { x: x, y: y };
-        this.velocity = { x: playerVelocity.x * 2, y: 0 };
-        this.image = image;
-        this.width = 30;
-        this.height = 10;
-        this.playerPosition = playerPosition;
-        this.playerVelocity = playerVelocity;
-    }
-
-    draw() {
-        c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
-    }
-
-    update() {
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
-        if (this.position.x > canvas.width || this.position.y > canvas.height) {
-            arrowImage.style.display = 'none';
-        }
-    }
-
-    fire() {
-        arrowImage.style.display = 'block';
-    }
-}
+ 
    class Enemy {
     constructor(image) {
         // Initial position and velocity of the enemy
