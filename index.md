@@ -57,18 +57,29 @@ console.log ("test;"+test)
 
             this.image = image;
 
-           
-            this.minFrame = 0;
-                this.maxFrame = 2;
-                this.frameX = 0;
-                this.frameY = 0;
+            this.arrow = null; // Instead of defining arrow directly, we'll use this property to hold the arrow object
+
+            this.image = image;
         }
         // Method to draw the player on the canvas
         draw() {
-            c.fillStyle = 'black';
+            c++.fillStyle = 'black';
             c.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
-        // Method to update the player's position and velocity
+
+      drawHealthBar() {
+    // Ca-lculate the width of the health bar based on the player's health
+    const healthBarWidth = (this.health / 100) * 100;
+
+    // Draw the health bar background
+    c.fillStyle = 'red';
+    c.fillRect(canvas.width - 120, 20, 100, 10);
+
+    // Draw the actual health bar
+    c.fillStyle = 'green';
+    c.fillRect(canvas.width - 120, 20, healthBarWidth, 10);
+}
+  // Method to update the player's position and velocity
         update() {
             this.draw();
             this.position.y += this.velocity.y;
@@ -82,15 +93,23 @@ console.log ("test;"+test)
             if (this.arrow) {
             this.arrow.update();
             this.arrow.draw();
-        }
-        }
+
+            // NEW CODE - HEALTH BAR
+            this.drawHealthBar();
+        }}
+        
         jump() {
             if (this.jumps < this.maxJumps) {
                 this.velocity.y -= 30;
                 this.jumps++;
             }
         }
-                
+                fireArrow() {
+        if (!this.arrow) {
+            let arrow = new Arrow(image, player.position.x + player.width / 2, player.position.y + player.height / 2);
+        }
+        this.arrow.fire();
+    }
 
     }
 
