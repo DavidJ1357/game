@@ -16,6 +16,7 @@ courses: { compsci: {week: 2} }
 </style>
 
 <canvas id='canvas'></canvas>
+<img id="dogSprite" src="{{site.baseurl}}/images/Hypixel.png">
 
 <script>
 
@@ -56,9 +57,11 @@ console.log ("test;"+test)
 
             this.image = image;
 
-            this.arrow = null; // Instead of defining arrow directly, we'll use this property to hold the arrow object
-
-            this.image = image;
+           
+            this.minFrame = 0;
+                this.maxFrame = 2;
+                this.frameX = 0;
+                this.frameY = 0;
         }
         // Method to draw the player on the canvas
         draw() {
@@ -87,12 +90,7 @@ console.log ("test;"+test)
                 this.jumps++;
             }
         }
-                fireArrow() {
-        if (!this.arrow) {
-            let arrow = new Arrow(image, player.position.x + player.width / 2, player.position.y + player.height / 2);
-        }
-        this.arrow.fire();
-    }
+                
 
     }
 
