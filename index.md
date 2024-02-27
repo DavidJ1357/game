@@ -16,7 +16,7 @@ courses: { compsci: {week: 2} }
 </style>
 
 <canvas id='canvas'></canvas>
-<img id="dogSprite" src="{{site.baseurl}}/images/Hypixel.png">
+
 
 <script>
 
@@ -63,7 +63,7 @@ console.log ("test;"+test)
         }
         // Method to draw the player on the canvas
         draw() {
-            c++.fillStyle = 'black';
+            c.fillStyle = 'black';
             c.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
 
@@ -104,12 +104,7 @@ console.log ("test;"+test)
                 this.jumps++;
             }
         }
-                fireArrow() {
-        if (!this.arrow) {
-            let arrow = new Arrow(image, player.position.x + player.width / 2, player.position.y + player.height / 2);
-        }
-        this.arrow.fire();
-    }
+                
 
     }
 
@@ -335,10 +330,7 @@ if (
                 console.log('right');
                 keys.right.pressed = true;
                 break;
-                case 32:
-                console.log('space');
-                player.fireArrow();
-                break;
+               
         }
     });
     // Event listener for keyup events
