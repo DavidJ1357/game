@@ -60,7 +60,11 @@ console.log ("test;"+test)
             this.arrow = null; // Instead of defining arrow directly, we'll use this property to hold the arrow object
 
             this.image = image;
+
+            // NEW CODE - HEALTH BAR
+        this.health = 100; // Set initial health
         }
+
         // Method to draw the player on the canvas
         draw() {
             c.fillStyle = 'black';
@@ -68,17 +72,18 @@ console.log ("test;"+test)
         }
 
     drawHealthBar() {
-    // Ca-lculate the width of the health bar based on the player's health
-    const healthBarWidth = (this.health / 100) * 100;
+        // Calculate the width of the health bar based on the player's health
+        const healthBarWidth = (this.health / 100) * 100;
 
-    // Draw the health bar background
-    c.fillStyle = 'red';
-    c.fillRect(canvas.width - 120, 20, 100, 10);
+        // Draw the health bar background
+        c.fillStyle = 'red';
+        c.fillRect(canvas.width - 120, 20, 100, 10);
 
-    // Draw the actual health bar
-    c.fillStyle = 'green';
-    c.fillRect(canvas.width - 120, 20, healthBarWidth, 10);
-}
+        // Draw the actual health bar
+        c.fillStyle = 'green';
+        c.fillRect(canvas.width - 120, 20, healthBarWidth, 10);
+    }
+    
   // Method to update the player's position and velocity
         update() {
     this.draw();
