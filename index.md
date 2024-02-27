@@ -17,6 +17,7 @@ courses: { compsci: {week: 2} }
 
 <canvas id='canvas'></canvas>
 
+
 <script>
 
 var test = 0
@@ -59,9 +60,6 @@ console.log ("test;"+test)
             this.arrow = null; // Instead of defining arrow directly, we'll use this property to hold the arrow object
 
             this.image = image;
-
-             // NEW CODE - HEALTH BAR
-            this.health = 100; // Set initial health
         }
         // Method to draw the player on the canvas
         draw() {
@@ -105,13 +103,10 @@ console.log ("test;"+test)
                 this.velocity.y -= 30;
                 this.jumps++;
             }
-
-                fireArrow() 
-        if (!this.arrow) {
-            let arrow = new Arrow(image, player.position.x + player.width / 2, player.position.y + player.height / 2);
         }
-        this.arrow.fire();
-        }}
+                
+
+    }
 
  
    class Enemy {
@@ -335,10 +330,7 @@ if (
                 console.log('right');
                 keys.right.pressed = true;
                 break;
-                case 32:
-                console.log('space');
-                player.fireArrow();
-                break;
+               
         }
     });
     // Event listener for keyup events
