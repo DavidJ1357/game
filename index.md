@@ -90,13 +90,11 @@ console.log ("test;"+test)
                 this.velocity.y = 0;
                 this.jumps = 0; 
             }
-            if (this.arrow) {
-            this.arrow.update();
-            this.arrow.draw();
+           
 
             // NEW CODE - HEALTH BAR
             this.drawHealthBar();
-        }}
+        }
         
         jump() {
             if (this.jumps < this.maxJumps) {
