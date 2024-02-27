@@ -129,11 +129,18 @@ console.log ("test;"+test)
             this.velocity.x = -knockbackX;
             this.velocity.y = knockbackY;
         }
+
+        // If player is on the left side, push the player to the left
+        if (playerCenterX < enemyCenterX) {
+            this.position.x -= 50; // Adjust as needed
+        }
     }
 
     // Update health bar
     this.drawHealthBar();
 }
+
+
 
 
         
