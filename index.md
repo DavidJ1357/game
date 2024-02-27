@@ -83,7 +83,7 @@ console.log ("test;"+test)
         c.fillStyle = 'green';
         c.fillRect(canvas.width - 120, 20, healthBarWidth, 10);
     }
-
+    
   // Method to update the player's position and velocity
         update() {
             this.draw();
@@ -100,10 +100,8 @@ console.log ("test;"+test)
             this.arrow.draw();
 
             // NEW CODE - HEALTH BAR
-            this.drawHealthBar(); // Make sure this line is present
-        }
-        }
-    }
+            this.drawHealthBar();
+        }}
         
         jump() {
             if (this.jumps < this.maxJumps) {
