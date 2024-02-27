@@ -72,17 +72,17 @@ console.log ("test;"+test)
         }
 
     drawHealthBar() {
-        // Calculate the width of the health bar based on the player's health
-        const healthBarWidth = (this.health / 100) * 100;
+    // Calculate the width of the health bar based on the player's health
+    const healthBarWidth = (this.health / 100) * 150; // Adjusted width
 
-        // Draw the health bar background
-        c.fillStyle = 'red';
-        c.fillRect(canvas.width - 120, 20, 100, 10);
+    // Draw the health bar background
+    c.fillStyle = 'grey';
+    c.fillRect(canvas.width - 210, 32, 250, 25); // Adjusted position and dimensions
 
-        // Draw the actual health bar
-        c.fillStyle = 'green';
-        c.fillRect(canvas.width - 120, 20, healthBarWidth, 10);
-    }
+    // Draw the actual health bar
+    c.fillStyle = 'green';
+    c.fillRect(canvas.width - 170, 20, healthBarWidth, 15); // Adjusted position and dimensions
+}
     
   // Method to update the player's position and velocity
         update() {
@@ -304,8 +304,6 @@ console.log ("test;"+test)
         // COLLISIONS BETWEEN BLOCK OBJECT AND PLAYER
         //--
         // Check for collision between player and block object
-// Check for collision between player and block object
-// Check for collision between player and block object
 if (
     player.position.y + player.height >= blockObject.position.y &&
     player.position.y <= blockObject.position.y + blockObject.height &&
