@@ -67,7 +67,7 @@ console.log ("test;"+test)
             c.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
 
-      drawHealthBar() {
+    drawHealthBar() {
     // Ca-lculate the width of the health bar based on the player's health
     const healthBarWidth = (this.health / 100) * 100;
 
@@ -351,25 +351,5 @@ if (
             
         }
     });
-
-const audio = new Audio('{{site.baseurl}}/images/Streetfighter.mp3');
-
-// Event listener for button click to toggle music
-const button = document.querySelector("#button");
-const icon = document.querySelector("#button > i");
-
-button.addEventListener("click", () => {
-    if (backgroundMusic.paused) {
-        backgroundMusic.volume = 0.2;
-        backgroundMusic.play();
-        icon.classList.remove('fa-volume-up');
-        icon.classList.add('fa-volume-mute');
-    } else {
-        backgroundMusic.pause();
-        icon.classList.remove('fa-volume-mute');
-        icon.classList.add('fa-volume-up');
-    }
-    button.classList.add("fade");
-}); 
 
 </script>
