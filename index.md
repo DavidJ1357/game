@@ -81,20 +81,56 @@ console.log ("test;"+test)
 }
   // Method to update the player's position and velocity
         update() {
-            this.draw();
-            this.position.y += this.velocity.y;
-            this.position.x += this.velocity.x;
-            if (this.position.y + this.height + this.velocity.y <= canvas.height)
-                this.velocity.y += gravity;
-            else {
-                this.velocity.y = 0;
-                this.jumps = 0; 
-            }
-           
+    this.draw();
+    this.position.y += this.velocity.y;
+    this.position.x += this.velocity.x;
+    if (this.position.y + this.height + this.velocity.y <= canvas.height)
+        this.velocity.y += gravity;
+    else {
+        this.velocity.y = 0;
+        this.jumps = 0;
+    }
 
-            // NEW CODE - HEALTH BAR
-            this.drawHealthBar();
+    // Check for collision with the enemy
+    if (
+        this.position.y + this.height >= enemy.position.y &&
+        this.position.y <= enemy.position.y + enemy.height &&
+        this.position.x + this.width >= enemy.position.x &&
+        this.position.x <= enemy.position.x + enemy.width
+    ) {
+        // Calculate the center of the player
+        const playerCenterX = this.position.x + this.width / 2;
+        const playerCenterY = this.position.y + this.height / 2;
+
+        // Calculate the center of the enemy
+        const enemyCenterX = enemy.position.x + enemy.width / 2;
+        const enemyCenterY = enemy.position.y + enemy.height / 2;
+
+        // Calculate the angle between the player and the enemy
+        const angle = Math.atan2(playerCenterY - enemyCenterY, playerCenterX - enemyCenterX);
+
+        // Calculate the knockback velocity based on the angle
+        const knockbackVelocity = 10;
+        const knockbackX = Math.cos(angle) * knockbackVelocity;
+        const knockbackY = Math.sin(angle) * knockbackVelocity;
+
+        // Apply knockback effect based on player position relative to enemy
+        if (playerCenterX > enemyCenterX) {
+            // Player is on the right side of the enemy
+            this.velocity.x = knockbackX;
+            this.velocity.y = knockbackY;
+        } else {
+            // Player is on the left side of the enemy
+            this.velocity.x = -knockbackX;
+            this.velocity.y = knockbackY;
         }
+    }
+
+    // Update health bar
+    this.drawHealthBar();
+}
+
+
         
         jump() {
             if (this.jumps < this.maxJumps) {
