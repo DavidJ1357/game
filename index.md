@@ -77,7 +77,7 @@ console.log ("test;"+test)
 
     // Draw the health bar background
     c.fillStyle = 'grey';
-    c.fillRect(canvas.width - 210, 32, 250, 25); // Adjusted position and dimensions
+    c.fillRect(canvas.width - 210, 15, 250, 25); // Adjusted position and dimensions
 
     // Draw the actual health bar
     c.fillStyle = 'green';
