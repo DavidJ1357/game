@@ -132,7 +132,7 @@ console.log ("test;"+test)
 
         // If player is on the left side, push the player to the left
         if (playerCenterX < enemyCenterX) {
-            this.position.x -= 50; // Adjust as needed
+            this.position.x -= 10; // Adjust as needed
         }
     }
 
