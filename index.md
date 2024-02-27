@@ -76,8 +76,8 @@ console.log ("test;"+test)
     const healthBarWidth = (this.health / 100) * 150; // Adjusted width
 
     // Draw the health bar background
-    c.fillStyle = 'grey';
-    c.fillRect(canvas.width - 210, 15, 250, 25); // Adjusted position and dimensions
+    c.fillStyle = 'red';
+    c.fillRect(canvas.width - 170, 20, 150, 15); // Adjusted position and dimensions
 
     // Draw the actual health bar
     c.fillStyle = 'green';
@@ -310,6 +310,7 @@ if (
     player.position.x + player.width >= blockObject.position.x &&
     player.position.x <= blockObject.position.x + blockObject.width
 ) {
+    
     if (player.position.y + player.height <= blockObject.position.y + blockObject.height / 4) {
         // Stop player from falling through the block
         player.velocity.y = 4;
