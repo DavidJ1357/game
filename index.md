@@ -18,8 +18,8 @@ courses: { compsci: {week: 2} }
   }
 
   #canvas {
-    background-color: #007FFF;
     border: 1px solid black;
+    background: src("{{site.baseurl}}/images/output-onlinepngtools.png") center center fixed;
   }
 </style>
 
@@ -278,21 +278,41 @@ console.log ("test;"+test)
                 console.log('up');
                 player.jump(); // Call jump method on keypress
                 break;
-            case 37:
-                console.log('left');
-                keys.left.pressed = true;
-                break;
-            case 40:
-                console.log('down');
-                break;
-            case 39:
-                console.log('right');
-                keys.right.pressed = true;
-                break;
-            case 38:
-                console.log('up');
-                player.jump(); // Call jump method on keypress
-                break;
+          import * as vscode from 'vscode';
+
+export function activate(context: vscode.ExtensionContext) {
+    let disposable = vscode.commands.registerCommand('extension.arrowKeyNavigation', () => {
+        // Subscribe to arrow key events
+        let arrowKeyHandler = vscode.commands.registerCommand('arrowKeyNavigation.handleArrowKeys', (args) => {
+            // Check if the argument is an arrow key event
+            if (args && args.key) {
+                switch (args.key) {
+                    case 'ArrowUp':
+                        // Handle Arrow Up
+                        break;
+                    case 'ArrowDown':
+                        // Handle Arrow Down
+                        break;
+                    case 'ArrowLeft':
+                        // Handle Arrow Left
+                        break;
+                    case 'ArrowRight':
+                        // Handle Arrow Right
+                        break;
+                    default:
+                        // Handle other keys
+                        break;
+                }
+            }
+        });
+
+        context.subscriptions.push(arrowKeyHandler);
+    });
+
+    context.subscriptions.push(disposable);
+}
+
+export function deactivate() {}
         }
     });
     // Event listener for keyup events
