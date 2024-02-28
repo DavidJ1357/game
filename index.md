@@ -159,7 +159,7 @@ console.log ("test;"+test)
     constructor(image) {
         // Initial position and velocity of the enemy
         this.position = {
-            x: 100,
+            x: 700,
             y: 150
         };
         this.velocity = {
