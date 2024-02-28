@@ -76,8 +76,8 @@ console.log ("test;"+test)
     const healthBarWidth = (this.health / 100) * 150; // Adjusted width
 
     // Draw the health bar background
-    c.fillStyle = 'grey';
-    c.fillRect(canvas.width - 210, 32, 250, 25); // Adjusted position and dimensions
+    c.fillStyle = 'red';
+    c.fillRect(canvas.width - 170, 20, 150, 15); // Adjusted position and dimensions
 
     // Draw the actual health bar
     c.fillStyle = 'green';
@@ -303,7 +303,7 @@ console.log ("test;"+test)
         //--
         // COLLISIONS BETWEEN BLOCK OBJECT AND PLAYER
         //--
-        // Check for collision between player and block object
+// Handle player collisions with the block object
 if (
     player.position.y + player.height >= blockObject.position.y &&
     player.position.y <= blockObject.position.y + blockObject.height &&
@@ -319,6 +319,27 @@ if (
         // Check if player is colliding with the bottom half of the block
         // Reset player's vertical velocity to simulate falling back down
         player.velocity.y = 4;
+    }
+}
+
+// Check for collision between player and enemy
+if (
+    player.position.y + player.height >= enemy.position.y &&
+    player.position.y <= enemy.position.y + enemy.height &&
+    player.position.x + player.width >= enemy.position.x &&
+    player.position.x <= enemy.position.x + enemy.width
+) {
+    // Decrease player's health when hit by the enemy
+    player.health -= 1; // You can adjust the amount of health to be deducted
+
+    // Optional: You can add more logic here, such as resetting enemy position or changing its behavior
+
+    // Check if player's health is below 0
+    if (player.health <= 0) {
+        // Game over logic, reset the game or take appropriate actions
+        console.log('Game Over');
+        // For now, let's reset player's health to 100
+        player.health = 100;
     }
 }
 
