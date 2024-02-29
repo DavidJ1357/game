@@ -50,8 +50,8 @@ console.log ("test;"+test)
                 y: 0
             };
             // Dimensions of the player
-            this.width = 30;
-            this.height = 30;
+            this.width = 60;
+            this.height = 90;
             // Track the number of jumps
             this.jumps = 0;
             // Maximum allowed jumps
@@ -70,7 +70,8 @@ console.log ("test;"+test)
         // Method to draw the player on the canvas
         draw() {
             
-             c.drawImage(playerimg, this.position.x, this.position.y);
+             c.drawImage(playerimg, this.position.x, this.position.y, this.width, this.height);
+            
         }
 
     drawHealthBar() {
