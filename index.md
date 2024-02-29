@@ -67,8 +67,9 @@ console.log ("test;"+test)
 
         // Method to draw the player on the canvas
         draw() {
-            c.fillStyle = 'black';
-            c.fillRect(this.position.x, this.position.y, this.width, this.height);
+             var img = new Image();
+             img.src = "maincharactergame.png";
+             ctx.drawImage(img, 0, 0);
         }
 
     drawHealthBar() {
