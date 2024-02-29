@@ -9,18 +9,10 @@ courses: { compsci: {week: 2} }
 ---
 
 <style>
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-  }
-
-  #canvas {
-    background-color: #007FFF;
-    border: 1px solid black;
-  }
+    #canvas {
+        margin: 0;
+        border: 1px solid white;
+    }
 </style>
 
 <canvas id='canvas'></canvas>
@@ -403,25 +395,7 @@ if (
                 console.log('right');
                 keys.right.pressed = true;
                 break;
-            case 87:
-                console.log('up');
-                player.jump(); // Call jump method on keypress
-                break;
-            case 37:
-                console.log('left');
-                keys.left.pressed = true;
-                break;
-            case 40:
-                console.log('down');
-                break;
-            case 39:
-                console.log('right');
-                keys.right.pressed = true;
-                break;
-            case 38:
-                console.log('up');
-                player.jump(); // Call jump method on keypress
-                break;
+               
         }
     });
     // Event listener for keyup events
