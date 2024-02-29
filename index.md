@@ -35,6 +35,8 @@ console.log ("test;"+test)
     canvas.height = 500;
     // Define gravity value
     let gravity = 1.5;
+    var playerimg = new Image();
+         playerimg.src = "images/maincharactergame.png";
     // Define the Player class
     class Player {
         constructor(image) {
@@ -67,9 +69,8 @@ console.log ("test;"+test)
 
         // Method to draw the player on the canvas
         draw() {
-             var img = new Image();
-             img.src = "maincharactergame.png";
-             ctx.drawImage(img, 0, 0);
+            
+             c.drawImage(playerimg, this.position.x, this.position.y);
         }
 
     drawHealthBar() {
